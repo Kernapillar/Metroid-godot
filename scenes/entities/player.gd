@@ -4,6 +4,7 @@ var direction_x: float
 var speed = 120
 @export var gravity = 10
 @export var jump_strength = 10
+signal shoot(pos: Vector2, dir: Vector2)
 
 
 func get_input(): 
@@ -11,7 +12,7 @@ func get_input():
 	if Input.is_action_just_pressed("jump"): 
 		velocity.y -= jump_strength
 	if Input.is_action_just_pressed("shoot") and $ReloadTimer.time_left == 0:
-		print('shooting')
+		shoot.emit(position, get_local_mouse_position().normalized())
 		$ReloadTimer.start() 
 		
 
