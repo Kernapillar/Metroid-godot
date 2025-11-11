@@ -5,6 +5,16 @@ var speed = 120
 @export var gravity = 10
 @export var jump_strength = 10
 signal shoot(pos: Vector2, dir: Vector2)
+var aim_directions = {
+	"(1.0, 0.0)": 0, 
+	"(1.0, 1.0)": 1, 
+	"(0.0, 1.0)": 2, 
+	"(-1.0, 1.0)": 3, 
+	"(-1.0, 0.0)": 4, 
+	"(-1.0, -1.0)": 5, 
+	"(0.0, -1.0)": 6, 
+	"(1.0, -1.0)": 7, 
+}
 
 
 func get_input(): 
@@ -32,4 +42,8 @@ func animation():
 		$legs.flip_h = true	
 	else: 
 		$legs.flip_h = false
-			
+	if not is_on_floor(): 
+		$AnimationPlayer.current_animation = "jump"
+	var raw_dir = get_local_mouse_position().normalized()
+	var adjusted_dir = Vector2(round(raw_dir.x), round(raw_dir.y))
+	$torso.frame = aim_directions[str(adjusted_dir)]
