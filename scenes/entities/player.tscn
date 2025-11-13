@@ -1,27 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://ed60lwykumhf"]
+[gd_scene load_steps=10 format=3 uid="uid://ed60lwykumhf"]
 
 [ext_resource type="Script" uid="uid://bq4jl7xyd15sa" path="res://scenes/entities/player.gd" id="1_08t41"]
 [ext_resource type="Texture2D" uid="uid://de5wf7al0hknv" path="res://graphics/characters/player.png" id="2_08t41"]
+[ext_resource type="Texture2D" uid="uid://otyoj5px7yk7" path="res://graphics/ui/crosshair.png" id="3_1ie0h"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0qees"]
 height = 34.0
-
-[sub_resource type="Animation" id="Animation_1ie0h"]
-resource_name = "run"
-length = 1.4
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("legs:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [9, 10, 11, 12, 13, 14, 15]
-}
 
 [sub_resource type="Animation" id="Animation_42nxq"]
 length = 0.001
@@ -70,6 +54,23 @@ tracks/0/keys = {
 "values": [17]
 }
 
+[sub_resource type="Animation" id="Animation_1ie0h"]
+resource_name = "run"
+length = 1.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("legs:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [9, 10, 11, 12, 13, 14, 15]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5u6hq"]
 _data = {
 &"RESET": SubResource("Animation_42nxq"),
@@ -113,3 +114,7 @@ position = Vector2(0, -9)
 texture = ExtResource("2_08t41")
 hframes = 8
 vframes = 3
+
+[node name="targetMarker" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_1ie0h")
