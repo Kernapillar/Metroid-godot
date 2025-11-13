@@ -13,3 +13,9 @@ func _ready():
 	#$Sprite2D.scale = Vector2.ZERO
 	var tween = get_tree().create_tween()
 	tween.tween_property($Sprite2D, "scale", Vector2(1, 1), 0.3).from(Vector2.ZERO)
+
+
+func _on_body_entered(body):
+	if "take_damage" in body: 
+		body.take_damage(1)
+	queue_free()

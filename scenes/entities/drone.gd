@@ -2,31 +2,46 @@ extends CharacterBody2D
 
 var target = null
 var speed = 80
+var health = 3
+var exploding = false
 
 func _physics_process(_delta):
-	$AnimationPlayer.play("flying")
+	if not exploding: 
+		$AnimationPlayer.play("flying")
 	if target: 
 		velocity = position.direction_to(target.position) * speed 
 	else: 
 		velocity = Vector2.ZERO
 	move_and_slide()
-	animate_bobbing()
-	
-func animate_bobbing(): 
-	var tween = get_tree().create_tween()
-	#print("bobbing up")
-	#tween.tween_property(self, "position:y", position.y - 3, 0.5)
-	print("bobbing down")
-	tween.tween_property(self, "position:y", position.y + 3, 0.3)
 
+func take_damage(_value): 
+	health -= 1
+	if health <= 0: 
+		explode()
+		
+
+func explode(): 
+	speed = 0
+	exploding = true
+	$explosion.visible = true
+	$Sprite2D.visible = false
+	$AnimationPlayer.play("explosion")
+	await $AnimationPlayer.animation_finished
+	queue_free()
+	
 
 func _on_aggro_radius_body_entered(body):
 	if body.name == "Player": 
+		print("targeting")
 		target = body
-		
+
 
 
 func _on_aggro_radius_body_exited(body):
 	if body.name == "Player": 
 		target = null
-	
+
+
+func _on_damage_radius_body_entered(body):
+	if body.name == "Player": 
+		explode()

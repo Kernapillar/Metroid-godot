@@ -2767,7 +2767,7 @@ tile_set = SubResource("TileSet_icy5c")
 [node name="entities" type="Node2D" parent="."]
 
 [node name="Drone" parent="entities" instance=ExtResource("4_urvlt")]
-position = Vector2(475, 100)
+position = Vector2(407, 81)
 
 [node name="Player" parent="entities" instance=ExtResource("1_377w7")]
 position = Vector2(290, 98)
