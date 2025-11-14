@@ -2767,12 +2767,18 @@ tile_set = SubResource("TileSet_icy5c")
 [node name="entities" type="Node2D" parent="."]
 
 [node name="Drone" parent="entities" instance=ExtResource("4_urvlt")]
-position = Vector2(407, 81)
+position = Vector2(635, 132)
 
 [node name="Player" parent="entities" instance=ExtResource("1_377w7")]
-position = Vector2(290, 98)
+position = Vector2(264, 105)
 collision_mask = 1
 jump_strength = 400
+
+[node name="Drone2" parent="entities" instance=ExtResource("4_urvlt")]
+position = Vector2(637, 92)
+
+[node name="Drone3" parent="entities" instance=ExtResource("4_urvlt")]
+position = Vector2(809, 115)
 
 [node name="Projectiles" type="Node2D" parent="."]
 

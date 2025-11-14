@@ -29,6 +29,13 @@ func explode():
 	await $AnimationPlayer.animation_finished
 	queue_free()
 	
+func chain_reaction(): 
+	for drone in get_tree().get_nodes_in_group("drones"): 
+		if position.distance_to(drone.position) < 50: 
+			print(drone)
+			drone.explode()
+	
+	
 
 func _on_aggro_radius_body_entered(body):
 	if body.name == "Player": 
