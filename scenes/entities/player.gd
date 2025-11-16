@@ -16,6 +16,8 @@ var aim_directions = {
 	"(1, -1)": 7, 
 }
 
+var health = 6
+
 
 func get_input(): 
 	direction_x = Input.get_axis("left", "right")
@@ -36,7 +38,13 @@ func _physics_process(delta):
 		animation()
 		move_and_slide()
 		update_marker()
-		
+
+func take_damage(value): 
+	health -= value
+	print("took ", str(value), " damage")
+	print(str(health), " health remaining")
+	
+
 func apply_gravity(delta): 
 	velocity.y += gravity * delta
 	

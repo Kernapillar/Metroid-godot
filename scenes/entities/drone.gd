@@ -14,8 +14,8 @@ func _physics_process(_delta):
 		velocity = Vector2.ZERO
 	move_and_slide()
 
-func take_damage(_value): 
-	health -= 1
+func take_damage(value): 
+	health -= value
 	if health <= 0: 
 		explode()
 		
@@ -29,11 +29,18 @@ func explode():
 	await $AnimationPlayer.animation_finished
 	queue_free()
 	
-func chain_reaction(): 
-	for drone in get_tree().get_nodes_in_group("drones"): 
-		if position.distance_to(drone.position) < 50: 
-			print(drone)
-			drone.explode()
+	
+func explosion_damage(): 
+	for entity in get_tree().get_nodes_in_group("entities"): 
+		print(entity)
+		if position.distance_to(entity.position) < 50 and "take_damage" in entity: 
+			entity.take_damage(3)
+
+#func chain_reaction(): 
+	#for drone in get_tree().get_nodes_in_group("drones"): 
+		#if position.distance_to(drone.position) < 50: 
+			#print(drone)
+			#drone.explode()
 	
 	
 
