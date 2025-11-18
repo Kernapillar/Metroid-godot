@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://ed60lwykumhf"]
+[gd_scene load_steps=12 format=3 uid="uid://ed60lwykumhf"]
 
 [ext_resource type="Script" uid="uid://bq4jl7xyd15sa" path="res://scenes/entities/player.gd" id="1_08t41"]
 [ext_resource type="Texture2D" uid="uid://de5wf7al0hknv" path="res://graphics/characters/player.png" id="2_08t41"]
 [ext_resource type="Texture2D" uid="uid://otyoj5px7yk7" path="res://graphics/ui/crosshair.png" id="3_1ie0h"]
 [ext_resource type="Texture2D" uid="uid://dijla4pisrrw8" path="res://graphics/lights/main.png" id="4_42nxq"]
+[ext_resource type="AudioStream" uid="uid://tkjj51je3two" path="res://audio/laser.wav" id="5_5u6hq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0qees"]
 radius = 7.0
@@ -125,3 +126,7 @@ vframes = 3
 [node name="targetMarker" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_1ie0h")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_5u6hq")
+volume_db = -18.596

@@ -15,6 +15,7 @@ var aim_directions = {
 	"(0, -1)": 6, 
 	"(1, -1)": 7, 
 }
+var exploding = false
 
 var health = 6
 
@@ -27,6 +28,7 @@ func get_input():
 		shoot.emit(position, get_local_mouse_position().normalized())
 		$ReloadTimer.start() 
 		var tween = get_tree().create_tween()
+		$AudioStreamPlayer2D.play()
 		tween.tween_property($targetMarker, "scale", Vector2(0.1, 0.1), 0.2)
 		tween.tween_property($targetMarker, "scale", Vector2(0.5, 0.5), 0.4)
 		

@@ -1,10 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://jolhvsfm1d1o"]
+[gd_scene load_steps=21 format=3 uid="uid://jolhvsfm1d1o"]
 
 [ext_resource type="Texture2D" uid="uid://vyr0ks75oxum" path="res://graphics/characters/drone.png" id="1_gs6nb"]
 [ext_resource type="Script" uid="uid://dhcgp6xwq4dd1" path="res://scenes/entities/drone.gd" id="1_n87ok"]
 [ext_resource type="Shader" uid="uid://75ffqwjbv6pn" path="res://scenes/shaders/drone.tres" id="2_6vf5s"]
 [ext_resource type="Texture2D" uid="uid://bav7n447bnsa5" path="res://graphics/fire/explosion.png" id="3_xcp44"]
 [ext_resource type="Texture2D" uid="uid://dijla4pisrrw8" path="res://graphics/lights/main.png" id="4_0tq5o"]
+[ext_resource type="AudioStream" uid="uid://dtnqyh7corvdx" path="res://audio/explosion.wav" id="6_in55t"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_in55t"]
 shader = ExtResource("2_6vf5s")
@@ -205,6 +206,10 @@ color = Color(0.77036196, 0.0005890482, 5.7756904e-07, 1)
 energy = 0.6
 texture = ExtResource("4_0tq5o")
 texture_scale = 0.3
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_in55t")
+volume_db = -36.503
 
 [connection signal="body_entered" from="aggro_radius" to="." method="_on_aggro_radius_body_entered"]
 [connection signal="body_exited" from="aggro_radius" to="." method="_on_aggro_radius_body_exited"]

@@ -30,6 +30,7 @@ func explode():
 	exploding = true
 	$explosion.visible = true
 	$AnimatedSprite2D.visible = false
+	$AudioStreamPlayer2D.play()
 	$AnimationPlayer.play("explosion")
 	await $AnimationPlayer.animation_finished
 	queue_free()
@@ -37,7 +38,7 @@ func explode():
 	
 func explosion_damage(): 
 	for entity in get_tree().get_nodes_in_group("entities"): 
-		if position.distance_to(entity.position) < 50 and "take_damage" in entity: 
+		if position.distance_to(entity.position) < 50 and "take_damage" in entity and not entity.exploding: 
 			entity.take_damage(3)
 
 #func chain_reaction(): 
