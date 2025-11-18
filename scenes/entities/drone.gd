@@ -32,7 +32,6 @@ func explode():
 	
 func explosion_damage(): 
 	for entity in get_tree().get_nodes_in_group("entities"): 
-		print(entity)
 		if position.distance_to(entity.position) < 50 and "take_damage" in entity: 
 			entity.take_damage(3)
 
@@ -46,7 +45,6 @@ func explosion_damage():
 
 func _on_aggro_radius_body_entered(body):
 	if body.name == "Player": 
-		print("targeting")
 		target = body
 
 
