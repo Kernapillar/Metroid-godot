@@ -2782,4 +2782,9 @@ position = Vector2(809, 115)
 
 [node name="Projectiles" type="Node2D" parent="."]
 
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+color = Color(0.40641972, 0.40641975, 0.4064196, 1)
+blend_mode = 2
+shadow_enabled = true
+
 [connection signal="shoot" from="entities/Player" to="." method="_on_player_shoot"]
