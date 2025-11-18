@@ -5,9 +5,10 @@ var speed = 80
 var health = 3
 var exploding = false
 
+func _ready():
+	$AnimatedSprite2D.material = $AnimatedSprite2D.material.duplicate()
+
 func _physics_process(_delta):
-	if not exploding: 
-		$AnimationPlayer.play("flying")
 	if target: 
 		velocity = position.direction_to(target.position) * speed 
 	else: 
@@ -18,13 +19,17 @@ func take_damage(value):
 	health -= value
 	if health <= 0: 
 		explode()
+	var tween = create_tween()
+	tween.tween_property($AnimatedSprite2D.material, 'shader_parameter/Progress', 0.0, 0.3)
+	tween.tween_property($AnimatedSprite2D.material, 'shader_parameter/Progress', 1.0, 0.5)
+	
 		
 
 func explode(): 
 	speed = 0
 	exploding = true
 	$explosion.visible = true
-	$Sprite2D.visible = false
+	$AnimatedSprite2D.visible = false
 	$AnimationPlayer.play("explosion")
 	await $AnimationPlayer.animation_finished
 	queue_free()
