@@ -46,6 +46,10 @@ func take_damage(value):
 	print("took ", str(value), " damage")
 	print(str(health), " health remaining")
 	
+	if health == 0: 
+		print("You lose!")
+	
+	
 
 func apply_gravity(delta): 
 	velocity.y += gravity * delta
